@@ -25,9 +25,9 @@ export default async function Home() {
 				height={320}
 			/>
 
-			<div className='h-[300px] w-[600px] relative'>
+			<div className='h-[300px] w-[600px] relative my-4'>
 				<Image
-					className='mt-5 rounded-md object-contain'
+					className='rounded-md object-contain'
 					src={'https://picsum.photos/600/300'}
 					alt='network image'
 					fill
