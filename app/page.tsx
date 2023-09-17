@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { authOptions } from './api/auth/[...nextauth]/route';
 import { ProductCard } from './components/ProductCard';
 import ImageWork from '@/public/images/work.jpg';
+import { Metadata } from 'next';
 
 export default async function Home() {
 	// Server Side Session Access
@@ -34,4 +35,18 @@ export default async function Home() {
 			</div>
 		</main>
 	);
+}
+
+// export const metadata: Metadata = {
+// 	title: 'Home Page'
+// }
+
+export async function generateMetaData(): Promise<Metadata> {
+	const title = 'From API';
+
+	return new Promise((res, rej) => {
+		res({
+			title: title,
+		});
+	});
 }
