@@ -41,7 +41,7 @@ export default async function Home() {
 // 	title: 'Home Page'
 // }
 
-export async function generateMetaData(): Promise<Metadata> {
+export async function generateMetadata(): Promise<Metadata> {
 	const title = 'From API';
 
 	return new Promise((res, rej) => {
