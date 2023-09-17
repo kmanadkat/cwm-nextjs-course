@@ -31,7 +31,7 @@ export async function PUT(
 		where: { id: parseInt(params.id) },
 	});
 	if (!user) {
-		return NextResponse.json({ error: 'user not found' }, { status: 404 });
+		return NextResponse.json({ error: 'User not found' }, { status: 404 });
 	}
 
 	const updatedUser = await prisma.user.update({
@@ -44,11 +44,17 @@ export async function PUT(
 
 export async function DELETE(
 	request: NextRequest,
-	{ params }: { params: { id: number } }
+	{ params }: { params: { id: string } }
 ) {
-	// Example Basic Validation
-	if (params.id > 10) {
-		return NextResponse.json({ error: 'user not found' }, { status: 404 });
+	// Check if user exists
+	const user = await prisma.user.findUnique({
+		where: { id: parseInt(params.id) },
+	});
+	if (!user) {
+		return NextResponse.json({ error: 'User not found' }, { status: 404 });
 	}
+
+	await prisma.user.delete({ where: { id: user.id } });
+
 	return NextResponse.json({ success: true, id: params.id });
 }
